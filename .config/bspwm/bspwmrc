@@ -1,0 +1,43 @@
+#!/bin/sh
+
+###########
+# STARTUP #
+###########
+
+# keybinding daemon
+sxhkd &
+
+# window compositor
+picom --experimental-backends -b &
+
+# prevents middle click paste in terminal because it's annoying
+xmousepasteblock &
+
+# set wallpaper
+nitrogen --set-scaled $HOME/wallpaper.png
+
+# polybar
+~/.config/polybar/launch.sh &
+
+xsetroot -cursor_name left_ptr
+
+################
+# bspwm config #
+################
+
+bspc monitor -d I II III IV V VI
+
+bspc config border_width 2
+bspc config window_gap   6
+
+# Border colors
+bspc config normal_border_color  "#4A4A4A"
+bspc config focused_border_color "#7AA2F7"
+bspc config urgent_border_color  "#E68282"
+bspc config presel_border_color  "#999FBB"
+
+
+bspc config split_ratio        0.50
+bspc config borderless_monocle true
+bspc config gapless_monocle    true
+
