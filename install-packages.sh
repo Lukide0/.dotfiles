@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 echo "Installing packages"
 pacman -Sy xorg-server xorg-xauth sddm bspwm sxhkd rofi alacritty picom nitrogen git dunst papirus-icon-theme zsh

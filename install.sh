@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 files=('.xinitrc' 'wallpaper.png' '.zshrc' '.p10k.zsh')
 config_folders=('betterlockscreen' 'bspwm' 'dunst' 'nvim' 'picom' 'polybar' 'rofi' 'sxhkd')

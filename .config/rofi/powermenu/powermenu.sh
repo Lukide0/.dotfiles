@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 theme=$HOME/.config/rofi/powermenu/config.rasi
 uptime="`uptime -p | sed -e 's/up //g'`"
