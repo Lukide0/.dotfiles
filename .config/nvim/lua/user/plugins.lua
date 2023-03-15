@@ -67,7 +67,7 @@ return packer.startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- colorscheme
-	use("folke/tokyonight.nvim")
+	use("navarasu/onedark.nvim")
 
 	-- telescope
 	use({

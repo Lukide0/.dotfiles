@@ -1,1 +1,7 @@
-vim.cmd.colorscheme("tokyonight-moon") -- enable colorscheme
+local onedark = require("onedark")
+
+onedark.setup({
+    style = "deep"
+})
+
+onedark.load()

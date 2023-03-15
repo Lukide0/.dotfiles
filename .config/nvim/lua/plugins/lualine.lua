@@ -4,4 +4,4 @@ if not lualine_is_ok then
 	return
 end
 
-lualine.setup({ options = { theme = "tokyonight" } })
+lualine.setup({ options = { theme = "onedark" } })

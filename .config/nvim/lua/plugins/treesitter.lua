@@ -11,7 +11,6 @@ if not treesitter_context_is_ok then
 end
 
 treesitter_context.setup()
-
 treesitter_configs.setup({
 	sync_install = false,
 	highlight = { enable = true, disable = { "" } },
