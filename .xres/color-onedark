@@ -1,0 +1,56 @@
+!  ██████╗ ███╗   ██╗███████╗██████╗  █████╗ ██████╗ ██╗  ██╗
+! ██╔═══██╗████╗  ██║██╔════╝██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝
+! ██║   ██║██╔██╗ ██║█████╗  ██║  ██║███████║██████╔╝█████╔╝ 
+! ██║   ██║██║╚██╗██║██╔══╝  ██║  ██║██╔══██║██╔══██╗██╔═██╗ 
+! ╚██████╔╝██║ ╚████║███████╗██████╔╝██║  ██║██║  ██║██║  ██╗
+!  ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+
+#define fg #c8ccd4
+#define bg #0c0e15
+
+#define mycursorcolor #c8ccd4
+
+! black
+#define c0 #0c0e15
+#define c8 #545862
+
+! red
+#define c1 #e06c75
+#define c9 #f65866
+
+! green
+#define c2 #98c379
+#define c10 #8bcd5b
+
+! yellow
+#define c3 #e5c07b
+#define c11 #dd9046
+
+! blue
+#define c4 #61afef
+#define c12 #41a7fc
+
+! magenta
+#define c5 #c678dd
+#define c13 #c75ae8
+
+! cyan
+#define c6 #56b6c2
+#define c14 #34bfd0
+
+! white
+#define c7 #abb2bf
+#define c15 #c8ccd4
+
+! polybar
+
+polybar.background: c0
+polybar.foreground: fg
+
+polybar.background-alt: c7
+polybar.foreground-alt: c6
+
+polybar.occupied: c7
+polybar.urgent: c1
+polybar.empty: c8
+polybar.focused: c4
