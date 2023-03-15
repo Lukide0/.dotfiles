@@ -49,7 +49,6 @@ echo "Installing packages:"
 pacman -Sy           \
   xorg-server        \
   xorg-xauth         \
-  sddm               \
   bspwm              \
   sxhkd              \
   rofi               \
@@ -71,10 +70,14 @@ git clone https://aur.archlinux.org/paru.git
 ( cd paru && makepkg -si )
 rm -r paru 
 
+echo "Downloading and installing Ly:"
 
-echo "Downloading betterlockscreen:"
+paru -S ly
+systemctl enable ly
+
+echo "Downloading and installing betterlockscreen:"
+
 paru -S betterlockscreen
-
 betterlockscreen -u ~/wallpaper.png --fx blur --blur 0.3
 
 echo "Downloading and installing fonts:"
