@@ -70,6 +70,8 @@ git clone https://aur.archlinux.org/paru.git
 ( cd paru && makepkg -si )
 rm -r paru 
 
+paru -S xmousepasteblock
+
 echo "Downloading and installing Ly:"
 
 paru -S ly

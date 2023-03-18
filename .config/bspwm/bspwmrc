@@ -8,7 +8,7 @@
 sxhkd &
 
 # window compositor
-picom --experimental-backends -b &
+picom -b --config $HOME/.config/picom/picom.conf &
 
 # prevents middle click paste in terminal because it's annoying
 xmousepasteblock &
@@ -17,7 +17,10 @@ xmousepasteblock &
 nitrogen --set-scaled $HOME/wallpaper.png
 
 # polybar
-~/.config/polybar/launch.sh &
+$HOME/.config/polybar/launch.sh > /dev/null 2> $HOME/.polybar.log &
+
+# polybar height
+bspc config top_padding 40
 
 xsetroot -cursor_name left_ptr
 
