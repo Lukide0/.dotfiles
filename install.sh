@@ -166,6 +166,7 @@ fi
 
 # List of all packages
 packages=( "alacritty" "bspwm" "dunst" "neovim" "nitrogen" "sxhkd" "ttf-jetbrains-mono-nerd" "picom" "polybar" "ripgrep" "rofi" "unzip" "zsh" )
+special_links=( "wallpaper.png" )
 
 info "Installing packages" "${packages[*]}"
 if request_confirm "Do you want to install them"; then
@@ -183,11 +184,10 @@ fi
 if request_confirm "Do you want to install Powerlevel10k theme for Zsh"; then
 
 	# Install Powerlevel10k theme for Zsh
-	info "Installing Powerlevel10k theme for Zsh"
+	info "Installing Powerlevel10k theme for Zsh"    
+    git clone --depth 1 "https://github.com/romkatv/powerlevel10k.git" ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-	install_aur_packages "zsh-theme-powerlevel10k-git"
-	printf "source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
-
+    special_links+=( ".zshrc" )
 fi
 
 if request_confirm "Do you want to install Xorg"; then
@@ -197,10 +197,12 @@ if request_confirm "Do you want to install Xorg"; then
 	install_packages "xorg-server" "xorg-xauth" "xorg-xinit" "xorg-xwayland" "xclip"
 	# The package that prevents pasting with the middle mouse button
 	install_aur_packages "xmousepasteblock"
+    
+    special_links+=( ".xinitrc" ".xres" ".Xresources" )
 fi
 
 info "Installing betterlockscreen"
-paru -S betterlockscreen
+install_aur_packages "betterlockscreen"
 
 info "Downloading dotfiles"
 if [[ -d "$HOME/.dotfiles" ]]; then
@@ -222,20 +224,20 @@ if request_confirm "Do you create symbolic links"; then
 			    warning "Removing folder '$folder'"
 		        rm -Rf $dest
             fi
-		
 
 		info "Created link '$folder' \u2192 '$dest'"
 		ln -sf "$folder" "$HOME/.config"
 	done
 
-    special_links=(".xinitrc" ".xres" ".Xresources" "wallpaper.png")
     for special in "${special_links[@]}"; do
 
 		info "Created link '$HOME/.dotfiles/$special' \u2192 '$HOME/$special'"
 	    ln -sf "$HOME/.dotfiles/$special" "$HOME"
     done
-
+    
+    info "Generating lock screen wallpaper"
     # Lock screen wallpaper
     betterlockscreen -u ~/wallpaper.png --fx blur --blur 0.3
 fi
 
+success "Done"
