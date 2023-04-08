@@ -165,7 +165,7 @@ if ! check_installed "ly" && request_confirm "Do you want to install 'Ly'(Displa
 fi
 
 # List of all packages
-packages=( "alacritty" "bspwm" "dunst" "neovim" "nitrogen" "sxhkd" "ttf-jetbrains-mono-nerd" "picom" "polybar" "ripgrep" "rofi" "unzip" "zsh" )
+packages=( "alacritty" "bspwm" "dunst" "neovim" "nitrogen" "sxhkd" "ttf-jetbrains-mono-nerd" "papirus-icon-theme"  "picom" "polybar" "ripgrep" "rofi" "unzip" "zsh" )
 special_links=( "wallpaper.png" )
 
 info "Installing packages" "${packages[*]}"
