@@ -97,8 +97,6 @@ return packer.startup(function(use)
 	})
 	use("jay-babu/mason-null-ls.nvim")
 
-	use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
-
 	if PACKER_BOOSTRAP then
 		require("packer").sync()
 	end
