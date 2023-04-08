@@ -61,6 +61,10 @@ return packer.startup(function(use)
 	})
 	use("nvim-treesitter/nvim-treesitter-context")
 
+	-- debugging
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui") -- nvim-dap ui
+
 	-- colorscheme
 	use("navarasu/onedark.nvim")
 
@@ -71,8 +75,11 @@ return packer.startup(function(use)
 	})
 	-- sidebar
 	use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
+
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
+
+	use("glepnir/lspsaga.nvim")
 
 	-- completion
 	use("hrsh7th/nvim-cmp") -- core
@@ -91,6 +98,7 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
 	use("williamboman/mason.nvim") -- package manager
 	use("williamboman/mason-lspconfig.nvim")
+	use("jay-babu/mason-nvim-dap.nvim")
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },

@@ -1,7 +1,7 @@
-local nvim_tree_is_ok, nvim_tree = pcall(require, "nvim-tree")
-if not nvim_tree_is_ok then
-	print("nvim-tree not found")
-	return
-end
+local nvim_tree = require("nvim-tree")
+local api = require("nvim-tree.api")
 
 nvim_tree.setup()
+
+local keymap = vim.keymap.set
+keymap("n", "<C-b>", api.tree.toggle)
