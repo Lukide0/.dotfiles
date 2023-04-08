@@ -4,7 +4,13 @@ if not bufferline_is_ok then
 	return
 end
 
-bufferline.setup({ icon_pinned = "" })
+bufferline.setup({
+	icons = {
+		pinned = {
+			button = "",
+		},
+	},
+})
 
 -- nvim-tree settings
 local nvim_tree_events = require("nvim-tree.events")
