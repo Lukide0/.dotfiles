@@ -2,27 +2,22 @@
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local mason_dap = require("mason-nvim-dap")
+local mason_null_ls = require("mason-null-ls")
+local null_ls = require("null-ls")
 
 mason.setup()
 
 mason_dap.setup({
     automatic_setup = true,
 })
-mason_dap.setup_handlers({})
 
 mason_lsp.setup()
-
-local mason_null_ls = require("mason-null-ls")
 
 mason_null_ls.setup({
     ensure_installed = { "stylua" },
     automatic_installation = false,
     automatic_setup = true,
 })
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local null_ls = require("null-ls")
 
 null_ls.setup({
     on_attach = function(client, bufnr)
@@ -39,8 +34,7 @@ null_ls.setup({
     end,
 })
 
-mason_null_ls.setup_handlers()
-
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local lspconfig = require("lspconfig")
 
 local function lspSymbol(name, icon)
