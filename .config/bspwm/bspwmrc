@@ -13,6 +13,9 @@ picom -b --config $HOME/.config/picom/picom.conf &
 # prevents middle click paste in terminal because it's annoying
 xmousepasteblock &
 
+# keyboard layouts
+setxkbmap cz,us -option 'grp:alt_shift_toggle'
+
 # set wallpaper
 nitrogen --set-scaled $HOME/wallpaper.png
 
