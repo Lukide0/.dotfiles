@@ -11,7 +11,7 @@ super + Return
 	alacritty
 
 # program launcher
-super + @space
+super + space
 	$HOME/.config/rofi/launcher/launcher.sh
 
 # make sxhkd reload its configuration files:
