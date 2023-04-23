@@ -31,6 +31,12 @@ XF86AudioLowerVolume
 XF86AudioPlay
 	playerctl play-pause
 
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
+
 #
 # bspwm hotkeys
 #
