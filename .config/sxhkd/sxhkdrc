@@ -19,6 +19,19 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 #
+# audio keys
+#
+
+XF86AudioRaiseVolume
+	playerctl volume 0.05+
+
+XF86AudioLowerVolume
+	playerctl volume 0.05-
+
+XF86AudioPlay
+	playerctl play-pause
+
+#
 # bspwm hotkeys
 #
 
