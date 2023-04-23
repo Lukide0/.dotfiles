@@ -19,6 +19,17 @@ setxkbmap cz,us -option 'grp:alt_shift_toggle'
 # set wallpaper
 nitrogen --set-scaled $HOME/wallpaper.png
 
+# 2 monitors
+if [[ "$( xrandr -q | grep -w "connected" | wc -l )" -eq "2" ]]; then
+    xrandr --output "HDMI-0" --primary --mode "1920x1080" --rotate normal --output "HDMI-1" --mode "1920x1080" --rotate normal --left-of "HDMI-0"
+
+    bspc monitor "HDMI-0" -d 1 2 3 4 5
+    bspc monitor "HDMI-1" -d 6 7 8 9 10
+
+else
+    bspc monitor -d 1 2 3 4 5 6
+fi
+
 # polybar
 $HOME/.config/polybar/launch.sh > /dev/null 2> $HOME/.polybar.log &
 
@@ -30,16 +41,6 @@ xsetroot -cursor_name left_ptr
 ################
 # bspwm config #
 ################
-
-# 2 monitors
-if [[ "$( xrandr -q | grep -w "connected" | wc -l )" -eq "2" ]]; then
-    xrandr --output "HDMI-0" --primary --mode "1920x1080" --rotate normal --output "HDMI-1" --mode "1920x1080" --rotate normal --left-of "HDMI-0"
-
-    bspc monitor "HDMI-0" -d 1 2 3 4 5
-    bspc monitor "HDMI-1" -d 6 7 8 9 10
-else
-    bspc monitor -d 1 2 3 4 5 6
-fi
 
 bspc config border_width 2
 bspc config window_gap   4
