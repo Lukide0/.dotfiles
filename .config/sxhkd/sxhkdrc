@@ -3,7 +3,7 @@
 #
 
 # window switcher
-super + w
+~Super_R
 	rofi -show window
 
 # terminal emulator
