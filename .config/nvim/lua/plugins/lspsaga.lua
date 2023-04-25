@@ -4,17 +4,10 @@ lspsaga.setup({
     -- outline
     outline = {
         win_position = "right",
-        keys = {
-            expand_or_jump = "<Enter>",
-            quit = "q",
-        },
+        keys = { expand_or_jump = "<Enter>", quit = "q" },
     },
     -- winbar
-    symbol_in_winbar = {
-        enable = true,
-        separator = " ",
-        folder_level = 1,
-    },
+    symbol_in_winbar = { enable = true, separator = " ", folder_level = 1 },
 })
 
 local keymap = vim.keymap.set

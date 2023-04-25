@@ -3,22 +3,16 @@ local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local mason_dap = require("mason-nvim-dap")
 local mason_null_ls = require("mason-null-ls")
-local null_ls = require("null-ls")
 
 mason.setup()
 
-mason_dap.setup({
-    automatic_setup = true,
-})
+mason_dap.setup({ automatic_setup = true })
 
 mason_lsp.setup()
 
-mason_null_ls.setup({
-    ensure_installed = { "stylua" },
-    automatic_installation = false,
-    automatic_setup = true,
-})
+mason_null_ls.setup({ automatic_installation = false, handlers = {} })
 
+local null_ls = require("null-ls")
 null_ls.setup({
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then

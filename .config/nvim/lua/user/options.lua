@@ -44,6 +44,6 @@ vim.opt.sidescrolloff = 8
 vim.opt.laststatus = 2
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
-vim.opt.mouse = "a" -- enable mouse support
+vim.opt.mouse = "a"       -- enable mouse support
 
 vim.opt.timeoutlen = 900
