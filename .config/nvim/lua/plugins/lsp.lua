@@ -3,6 +3,12 @@ local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
 local mason_dap = require("mason-nvim-dap")
 local mason_null_ls = require("mason-null-ls")
+local lsp_signature = require("lsp_signature")
+
+lsp_signature.setup({
+	bind = false,
+	handler_opts = { border = "single" },
+})
 
 mason.setup()
 

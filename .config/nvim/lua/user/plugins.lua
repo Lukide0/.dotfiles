@@ -1,20 +1,20 @@
 -- Packer boostrap
 local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({
-            "git",
-            "clone",
-            "--depth",
-            "1",
-            "https://github.com/wbthomason/packer.nvim",
-            install_path,
-        })
-        vim.cmd([[packadd packer.nvim]])
-        return true
-    end
-    return false
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({
+			"git",
+			"clone",
+			"--depth",
+			"1",
+			"https://github.com/wbthomason/packer.nvim",
+			install_path,
+		})
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
 
 local PACKER_BOOSTRAP = ensure_packer()
@@ -30,87 +30,87 @@ vim.cmd([[
 -- check if packer is installed
 local packer_is_ok, packer = pcall(require, "packer")
 if not packer_is_ok then
-    print("Packer not found")
-    return
+	print("Packer not found")
+	return
 end
 
 -- plugins
 return packer.startup(function(use)
-    use("wbthomason/packer.nvim")
+	use("wbthomason/packer.nvim")
 
-    use({
-        "goolord/alpha-nvim",
-        requires = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("alpha").setup(require("alpha.themes.dashboard").config)
-        end,
-    })
+	use({
+		"goolord/alpha-nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	})
 
-    -- git
-    use("lewis6991/gitsigns.nvim")
+	-- git
+	use("lewis6991/gitsigns.nvim")
 
-    -- treesitter
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        run = function()
-            local ts_update = require("nvim-treesitter.install").update({
-                with_sync = true,
-            })
-            ts_update()
-        end,
-    })
-    use("nvim-treesitter/nvim-treesitter-context")
+	-- treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			local ts_update = require("nvim-treesitter.install").update({
+				with_sync = true,
+			})
+			ts_update()
+		end,
+	})
+	use("nvim-treesitter/nvim-treesitter-context")
 
-    -- debugging
-    use("mfussenegger/nvim-dap")
-    use("rcarriga/nvim-dap-ui") -- nvim-dap ui
+	-- debugging
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui") -- nvim-dap ui
 
-    -- colorscheme
-    use("navarasu/onedark.nvim")
+	-- colorscheme
+	use("navarasu/onedark.nvim")
 
-    -- telescope
-    use({
-        "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/plenary.nvim" } },
-    })
-    -- sidebar
-    use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
+	-- telescope
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	-- sidebar
+	use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
 
-    -- statusline
-    use("nvim-lualine/lualine.nvim")
+	-- statusline
+	use("nvim-lualine/lualine.nvim")
 
-    use("glepnir/lspsaga.nvim")
-    use({
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
-    })
-    -- completion
-    use("hrsh7th/nvim-cmp") -- core
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-path")      -- file paths
-    use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("glepnir/lspsaga.nvim")
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
+	-- completion
+	use("hrsh7th/nvim-cmp") -- core
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-path") -- file paths
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("ray-x/lsp_signature.nvim")
+	-- snippets
+	use("L3MON4D3/LuaSnip")
 
-    -- snippets
-    use("L3MON4D3/LuaSnip")
+	-- icons
+	use("onsails/lspkind.nvim")
 
-    -- icons
-    use("onsails/lspkind.nvim")
+	-- LSP
+	use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
+	use("williamboman/mason.nvim") -- package manager
+	use("williamboman/mason-lspconfig.nvim")
+	use("jay-babu/mason-nvim-dap.nvim")
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use("jay-babu/mason-null-ls.nvim")
 
-    -- LSP
-    use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
-    use("williamboman/mason.nvim") -- package manager
-    use("williamboman/mason-lspconfig.nvim")
-    use("jay-babu/mason-nvim-dap.nvim")
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        requires = { { "nvim-lua/plenary.nvim" } },
-    })
-    use("jay-babu/mason-null-ls.nvim")
-
-    if PACKER_BOOSTRAP then
-        require("packer").sync()
-    end
+	if PACKER_BOOSTRAP then
+		require("packer").sync()
+	end
 end)
