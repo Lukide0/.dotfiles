@@ -71,8 +71,14 @@ return packer.startup(function(use)
 	-- telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = { "nvim-lua/plenary.nvim" },
 	})
+	-- harpoon
+	use({
+		"ThePrimeagen/harpoon",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
 	-- sidebar
 	use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
 
