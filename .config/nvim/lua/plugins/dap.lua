@@ -68,3 +68,15 @@ dapSymbol("BreakpointCondition", "ﳁ", "DapBreakpoint")
 dapSymbol("BreakpointRejected", "", "DapBreakpoint")
 dapSymbol("LogPoint", "", "DapLogpoint")
 dapSymbol("Stopped", "", "DapStopped")
+
+-- Servers
+dap.adapters.codelldb = {
+	type = "server",
+	port = "${port}",
+	executable = {
+		command = "codelldb",
+		args = { "--port", "${port}" },
+	},
+}
+
+require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "cpp", "h" } })
