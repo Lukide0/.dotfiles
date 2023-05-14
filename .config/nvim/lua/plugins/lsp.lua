@@ -65,7 +65,7 @@ local lsp_on_attach = function()
 	keymap("n", "<leader>da", vim.lsp.buf.code_action, { buffer = 0 }) -- show code actions
 	keymap("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 }) -- go to next error
 	keymap("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 }) -- go to previous error
-	keymap("n", "<leader>dl", ":Telescope diagnostics<cr>", { buffer = 0 }) -- list of errors
+	keymap("n", "<leader>dl", ":Lspsaga show_workspace_diagnostics<CR>", { buffer = 0 }) -- list of errors
 
 	keymap("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
 end
