@@ -111,7 +111,7 @@ local select_breakpoint = function()
 	}
 
 	pickers
-		.new(opts, {
+		.new(themes.get_dropdown(opts), {
 			prompt_title = "Create breakpoint",
 			finder = finders.new_table(options),
 			sorter = conf.generic_sorter(opts),
