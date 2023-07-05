@@ -14,7 +14,7 @@ picom -b --config $HOME/.config/picom/picom.conf &
 xmousepasteblock &
 
 # keyboard layouts
-setxkbmap cz,us -option 'grp:alt_shift_toggle'
+setxkbmap us,cz -option 'grp:alt_shift_toggle'
 
 # 2 monitors
 if [[ "$( xrandr -q | grep -w "connected" | wc -l )" -eq "2" ]]; then
