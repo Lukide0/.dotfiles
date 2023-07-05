@@ -5,6 +5,7 @@ local keymap = vim.keymap.set
 
 -- remap space as leader key
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation

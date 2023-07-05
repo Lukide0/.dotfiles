@@ -11,10 +11,10 @@ vim.opt.conceallevel = 0
 
 -- file options
 vim.opt.fileencoding = "utf-8"
-vim.opt.swapfile = true
+vim.opt.swapfile = false
 vim.opt.backup = false -- don't make a backup before overwriting a file
 vim.opt.writebackup = false
-vim.opt.updatetime = 5000
+vim.opt.updatetime = 500
 
 -- search options
 vim.opt.hlsearch = true -- show all matches on previous search

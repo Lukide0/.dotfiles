@@ -9,10 +9,10 @@ keymap("n", "]c", gitsigns.next_hunk)
 
 keymap("n", "<leader>hS", gitsigns.stage_hunk)
 keymap("v", "<leader>hS", function()
-    local first_line = vim.fn.line(".")
-    local last_line = vim.fn.line("v")
+	local first_line = vim.fn.line(".")
+	local last_line = vim.fn.line("v")
 
-    gitsigns.stage_hunk({ first_line, last_line })
+	gitsigns.stage_hunk({ first_line, last_line })
 end)
 
 keymap("n", "<leader>hs", gitsigns.preview_hunk_inline)

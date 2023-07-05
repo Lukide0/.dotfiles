@@ -38,8 +38,8 @@ local function breakpointPrint()
 end
 
 dapSymbol("Breakpoint", "", "DapBreakpoint")
-dapSymbol("BreakpointCondition", "ﳁ", "DapBreakpoint")
-dapSymbol("BreakpointRejected", "", "DapBreakpoint")
+dapSymbol("BreakpointCondition", "󰜋", "DapBreakpoint")
+dapSymbol("BreakpointRejected", "", "DapBreakpoint")
 dapSymbol("LogPoint", "", "DapLogpoint")
 dapSymbol("Stopped", "", "DapStopped")
 

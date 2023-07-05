@@ -7,18 +7,21 @@ local lsp_signature = require("lsp_signature")
 
 vim.lsp.set_log_level("ERROR")
 
+-- functions signatures
 lsp_signature.setup({
 	bind = false,
 	handler_opts = { border = "single" },
+	hint_enable = false,
 })
 
+-- setup mason plugins in correct order
 mason.setup()
-
 mason_dap.setup({ automatic_setup = true })
-
 mason_lsp.setup()
-
 mason_null_ls.setup({ automatic_installation = false, handlers = {} })
+
+-- setup null_ls
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local null_ls = require("null-ls")
 null_ls.setup({
@@ -41,8 +44,7 @@ null_ls.setup({
 	end,
 })
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
+-- completion + icons
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -56,6 +58,7 @@ lspSymbol("Warn", "")
 lspSymbol("Info", "")
 lspSymbol("Hint", "")
 
+-- mapping
 local keymap = vim.keymap.set
 local lsp_on_attach = function()
 	keymap("n", "gs", vim.lsp.buf.hover, { buffer = 0 }) -- show info
@@ -69,6 +72,7 @@ local lsp_on_attach = function()
 	keymap("n", "<leader>dl", ":Lspsaga show_workspace_diagnostics<CR>", { buffer = 0 }) -- list of errors
 end
 
+-- mason_lsp setup
 mason_lsp.setup_handlers({
 	function(server_name)
 		-- temporary fix: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
