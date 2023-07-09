@@ -7,10 +7,13 @@ local keymap = vim.keymap.set
 
 telescope.setup()
 telescope.load_extension("harpoon")
+telescope.load_extension("file_browser")
 
 -- find files
 keymap("n", "<leader>f", builtin.find_files, {})
 -- show harpoon marks
 keymap("n", "<leader>ls", harpoon_ui.toggle_quick_menu, {})
-
 keymap("n", "<leader>la", harpoon_mark.add_file, {})
+
+-- file browser
+keymap("n", "<leader>e", ":Telescope file_browser<CR>", {})

@@ -23,6 +23,10 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+	},
+	{
 		"goolord/alpha-nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
