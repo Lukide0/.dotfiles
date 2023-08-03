@@ -9,6 +9,13 @@ return {
 	"glepnir/lspsaga.nvim",
 	"lewis6991/gitsigns.nvim",
 	{
+		"NeogitOrg/neogit",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = function()
+			require("neogit").setup({})
+		end,
+	},
+	{
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
