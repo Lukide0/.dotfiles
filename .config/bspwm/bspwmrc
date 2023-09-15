@@ -17,15 +17,19 @@ xmousepasteblock &
 setxkbmap us,cz -option 'grp:alt_shift_toggle'
 
 # 2 monitors
-if [[ "$( xrandr -q | grep -w "connected" | wc -l )" -eq "2" ]]; then
-    xrandr --output "HDMI-0" --primary --mode "1920x1080" --rotate normal --output "HDMI-1" --mode "1920x1080" --rotate normal --left-of "HDMI-0"
+if [[ "$( xrandr -q | grep -w "connected" | wc -l )" -gt "1" ]]; then
+    
+    xrandr --output "HDMI-0" --off
+    xrandr --output "HDMI-1" --off
 
-    bspc monitor "HDMI-0" -d 1 2 3 4 5
-    bspc monitor "HDMI-1" -d 6 7 8 9 10
+    xrandr --output "HDMI-0" --primary --mode "1920x1080" --rotate normal --output "HDMI-1" --mode "1920x1080" --rotate normal --left-of "HDMI-0"
 
     # set wallpaper
     nitrogen --head=0 --set-scaled $HOME/wallpaper.png
     nitrogen --head=1 --set-scaled $HOME/wallpaper.png
+
+    bspc monitor "HDMI-0" -d 1 2 3 4 5
+    bspc monitor "HDMI-1" -d 6 7 8 9 10
 
 else
     bspc monitor -d 1 2 3 4 5 6
