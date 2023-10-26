@@ -1,37 +1,37 @@
 local lspsaga = require("lspsaga")
 
 lspsaga.setup({
-	-- outline
-	outline = {
-		win_position = "right",
-		keys = { expand_or_jump = "<Enter>", quit = "q" },
-	},
-	-- winbar
-	symbol_in_winbar = { enable = true, separator = " ", folder_level = 1 },
-	-- code actions
-	code_action = {
-		num_shortcut = true,
-		extend_gitsigns = true,
-		keys = { quit = "q", exec = "<CR>" },
-	},
-	-- rename
-	rename = {
-		quit = "<C-c>",
-		exec = "<CR>",
-		mark = "x",
-		confirm = "<CR>",
-		in_select = true,
-	},
-	-- UI settings
-	ui = {
-		title = true,
-		border = "single",
-		winblend = 0,
-		expand = "",
-		collapse = "",
-		code_action = "💡",
-		kind = {},
-	},
+    -- outline
+    outline = {
+        win_position = "right",
+        keys = { toggle_or_jump = "<Enter>", quit = "q" },
+    },
+    -- winbar
+    symbol_in_winbar = { enable = true, separator = " ", folder_level = 1 },
+    -- code actions
+    code_action = {
+        num_shortcut = true,
+        extend_gitsigns = true,
+        keys = { quit = "q", exec = "<CR>" },
+    },
+    -- rename
+    rename = {
+        quit = "<C-c>",
+        exec = "<CR>",
+        mark = "x",
+        confirm = "<CR>",
+        in_select = true,
+    },
+    -- UI settings
+    ui = {
+        title = true,
+        border = "single",
+        winblend = 0,
+        expand = "",
+        collapse = "",
+        code_action = "💡",
+        kind = {},
+    },
 })
 
 local keymap = vim.keymap.set
