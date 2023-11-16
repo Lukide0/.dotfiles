@@ -43,7 +43,7 @@ dapSymbol("BreakpointRejected", "", "DapBreakpoint")
 dapSymbol("LogPoint", "", "DapLogpoint")
 dapSymbol("Stopped", "", "DapStopped")
 
--- Servers
+-- Adapters
 dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
@@ -53,7 +53,23 @@ dap.adapters.codelldb = {
 	},
 }
 
-require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "cpp", "h" } })
+function get_exec()
+	return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+end
+
+-- Configs
+dap.configurations.cpp = {
+	{
+		name = "Launch codelldb",
+		type = "codelldb",
+		request = "launch",
+		program = get_exec,
+		cwd = "${workspaceFolder}",
+		stopOnEntry = true,
+	},
+}
+
+require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp" } })
 
 -- Dap breakpoint picker
 

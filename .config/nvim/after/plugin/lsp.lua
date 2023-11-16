@@ -5,7 +5,7 @@ local mason_dap = require("mason-nvim-dap")
 local mason_null_ls = require("mason-null-ls")
 local lsp_signature = require("lsp_signature")
 
-vim.lsp.set_log_level("ERROR")
+vim.lsp.set_log_level("off")
 
 -- functions signatures
 lsp_signature.setup({

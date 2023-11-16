@@ -1,9 +1,27 @@
 return {
 	"onsails/lspkind.nvim",
 	{
+		"akinsho/bufferline.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			require("lualine").setup({ options = { theme = "onedark" } })
+			require("lualine").setup({
+				options = {
+					theme = "onedark",
+					section_separators = { left = "", right = "" },
+					component_separators = { left = "", right = "" },
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "filename", "diagnostics", "diff" },
+					lualine_c = { "searchcount" },
+					lualine_x = { "tabs" },
+					lualine_y = { "selectioncount", "progress" },
+					lualine_z = { "location" },
+				},
+			})
 		end,
 	},
 	"glepnir/lspsaga.nvim",
