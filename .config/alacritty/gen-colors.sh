@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alacritty_colors_file="$HOME/.config/alacritty/colors.yml"
+alacritty_colors_file="$HOME/.config/alacritty/colors.toml"
 readonly colors=(black red green yellow blue magenta cyan white)
 
 xrdb_get()
@@ -34,24 +34,24 @@ touch $alacritty_colors_file
 {
 
 cat << EOF
-colors:
+[colors]
 
-  primary:
-    background: "$(xrdb_get background)"
-    foreground: "$(xrdb_get foreground)"
+[colors.primary]
+background = "$(xrdb_get background)"
+foreground = "$(xrdb_get foreground)"
   
-  normal:
+[colors.normal]
 EOF
 
 # normal colors
 for i in "${!colors[@]}"; do
-    printf '    %s: "%s"\n' "${colors[$i]}" "$(xrdb_get color$i)"
+    printf '%s = "%s"\n' "${colors[$i]}" "$(xrdb_get color$i)"
 done
 
 # bright colors
-printf "\n  bright:\n"
+printf "\n[colors.bright]\n"
 for i in "${!colors[@]}"; do
-    printf '    %s: "%s"\n' "${colors[$i]}" "$(xrdb_get color$(expr $i + 8))"
+    printf '%s = "%s"\n' "${colors[$i]}" "$(xrdb_get color$(expr $i + 8))"
 done
 
 } > $alacritty_colors_file

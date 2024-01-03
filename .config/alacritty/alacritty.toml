@@ -1,0 +1,15 @@
+import = ["~/.config/alacritty/colors.toml"]
+
+[window]
+padding = { x = 5, y = 5 }
+dynamic_title = true
+
+[font]
+normal = { family = "JetBrainsMonoNL NF", style = "Regular" }
+bold = { family = "JetBrainsMonoNL NF", style = "Bold" }
+italic = { family = "JetBrainsMonoNL NF", style = "Italic" }
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+blink_interval = 750
+blink_timeout = 5
