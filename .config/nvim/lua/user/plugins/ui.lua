@@ -25,6 +25,7 @@ return {
         end,
     },
     "glepnir/lspsaga.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
     "lewis6991/gitsigns.nvim",
     {
         "NeogitOrg/neogit",
@@ -41,6 +42,7 @@ return {
     },
     {
         "ThePrimeagen/harpoon",
+        branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
     {
