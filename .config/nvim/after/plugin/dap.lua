@@ -1,7 +1,10 @@
 local dap = require("dap")
 local dapui = require("dapui")
+local dap_virtual_text = require("nvim-dap-virtual-text")
 
 dapui.setup()
+
+dap_virtual_text.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
@@ -32,26 +35,20 @@ dapSymbol("BreakpointRejected", "", "DapBreakpoint")
 dapSymbol("LogPoint", "", "DapLogpoint")
 dapSymbol("Stopped", "", "DapStopped")
 
--- Adapters
-dap.adapters.codelldb = {
-    type = "server",
-    port = "${port}",
-    executable = {
-        command = "codelldb",
-        args = { "--port", "${port}" },
-    },
-}
-
 local program_path = vim.fn.getcwd() .. "/"
 
-local function get_exec()
-    local path = nil
+local function get_exec_func(program_base_path)
+    return function()
+        local path = nil
 
-    vim.ui.input({ prompt = "Path to executable: ", default = program_path, completion = "file" }, function(input)
-        path = input
-    end)
-
-    return path
+        vim.ui.input(
+            { prompt = "Path to executable: ", default = program_base_path, completion = "file" },
+            function(input)
+                path = input
+            end
+        )
+        return path
+    end
 end
 
 local function get_args()
@@ -73,21 +70,60 @@ dap.defaults.fallback.external_terminal = {
     args = { "-e" },
 }
 
+-- Adapters
+dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = "codelldb",
+        args = { "--port", "${port}" },
+    },
+}
+
+dap.adapters.gdb = {
+    type = "executable",
+    command = "gdb",
+    args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+}
+
+dap.adapters.coreclr = {
+    type = "executable",
+    command = "netcoredbg",
+    args = { "--interpreter=vscode" },
+}
+
 -- Configs
 dap.configurations.cpp = {
     {
         name = "Launch codelldb",
         type = "codelldb",
         request = "launch",
-        program = get_exec,
+        program = get_exec_func(program_path),
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
         terminal = "external",
         args = get_args,
     },
+    {
+        name = "Launch gdb",
+        type = "gdb",
+        request = "launch",
+        cwd = "${workspaceFolder}",
+        program = get_exec_func(program_path),
+        args = get_args,
+    },
 }
 
-require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp" } })
+dap.configurations.cs = {
+    {
+        name = "Launch netcoredbg",
+        type = "coreclr",
+        request = "launch",
+        cwd = "${workspaceFolder}",
+        program = get_exec_func(program_path .. "bin/Debug/"),
+        args = get_args,
+    },
+}
 
 -- Dap breakpoint picker
 
@@ -160,3 +196,6 @@ keymap("n", "<F5>", dap.continue)
 keymap("n", "<F10>", dap.step_over)
 keymap("n", "<F11>", dap.step_into)
 keymap("n", "<F12>", dap.step_out)
+keymap("n", "<leader>?", function()
+    dapui.eval(nil, { enter = true })
+end)
