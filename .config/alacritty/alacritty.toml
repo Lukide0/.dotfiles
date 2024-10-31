@@ -1,4 +1,3 @@
-import = ["~/.config/alacritty/colors.toml"]
 
 [window]
 padding = { x = 5, y = 5 }
@@ -13,3 +12,6 @@ italic = { family = "JetBrainsMonoNL NF", style = "Italic" }
 style = { shape = "Beam", blinking = "On" }
 blink_interval = 750
 blink_timeout = 5
+
+[general]
+import = ["~/.config/alacritty/colors.toml"]
