@@ -29,6 +29,10 @@ keymap("i", "jj", "<ESC>", opts)
 keymap("v", ">", ">gv", opts)
 keymap("v", "<", "<gv", opts)
 
+-- folding
+keymap("n", "<Tab>", "za", opts)
+keymap("v", "<Tab>", "za", opts)
+
 -- move text up and down
 keymap("n", "<A-j>", ":m .+1<cr>", opts)
 keymap("n", "<A-k>", ":m .-2<cr>", opts)

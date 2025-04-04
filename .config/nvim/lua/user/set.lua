@@ -9,6 +9,12 @@ vim.opt.cmdheight = 1
 
 vim.opt.conceallevel = 0
 
+-- folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 5
+
 -- file options
 vim.opt.fileencoding = "utf-8"
 vim.opt.swapfile = false
@@ -44,7 +50,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.laststatus = 2
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
-vim.opt.mouse = "a" -- enable mouse support
+vim.opt.mouse = "a"       -- enable mouse support
 vim.opt.mousemoveevent = true
 
 vim.opt.timeoutlen = 750
