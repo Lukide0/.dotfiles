@@ -41,17 +41,14 @@ return {
         end,
     },
     {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" },
-    },
-    {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
     {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim" },
+        "stevearc/oil.nvim",
+        opts = {},
+        dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
+        lazy = false,
     },
     {
         "debugloop/telescope-undo.nvim",

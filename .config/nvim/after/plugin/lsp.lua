@@ -36,24 +36,12 @@ lspSymbol("Hint", "")
 
 -- mapping
 local keymap = vim.keymap.set
-local lsp_on_attach = function()
-    keymap("n", "gs", vim.lsp.buf.hover, { buffer = 0 })                              -- show info
-    keymap("n", "gd", vim.lsp.buf.definition, { buffer = 0 })                         -- go to definition
-    keymap("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })                    -- go to type definition
-    keymap("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })                     -- go to implementation
-    keymap("n", "gr", vim.lsp.buf.references, { buffer = 0 })                         -- go to references
+keymap("n", "gs", vim.lsp.buf.hover, { buffer = 0 })                                 -- show info
+keymap("n", "gd", vim.lsp.buf.definition, { buffer = 0 })                            -- go to definition
+keymap("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })                       -- go to type definition
+keymap("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })                        -- go to implementation
 
-    keymap("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })               -- go to next error
-    keymap("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })               -- go to previous error
-    keymap("n", "<leader>dl", ":Lspsaga show_workspace_diagnostics<CR>", { buffer = 0 }) -- list of errors
-end
-
--- mason_lsp setup
-mason_lsp.setup_handlers({
-    function(server_name)
-        lspconfig[server_name].setup({ on_attach = lsp_on_attach })
-    end,
-})
+keymap("n", "<leader>dl", ":Lspsaga show_workspace_diagnostics<CR>", { buffer = 0 }) -- list of errors
 
 -- formatting on save
 local formatters = {}
