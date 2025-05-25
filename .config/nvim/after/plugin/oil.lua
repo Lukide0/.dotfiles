@@ -12,5 +12,5 @@ local keymap = vim.keymap.set
 
 keymap("n", "<leader>e", function()
     local cwd = vim.fn.getcwd()
-    oil.open(cwd, { preview = { horizontal = true } })
+    oil.open(cwd)
 end)
