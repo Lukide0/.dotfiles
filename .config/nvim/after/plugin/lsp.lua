@@ -24,30 +24,51 @@ mason_lsp.setup()
 -- completion + icons
 local lspconfig = require("lspconfig")
 
-local function lspSymbol(name, icon)
-    local hl = "DiagnosticSign" .. name
-    vim.fn.sign_define(hl, { text = icon, numhl = "", texthl = hl })
-end
-
-lspSymbol("Error", "")
-lspSymbol("Warn", "")
-lspSymbol("Info", "")
-lspSymbol("Hint", "")
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        },
+        texthl = {
+            [vim.diagnostic.severity.ERROR] = "Error",
+            [vim.diagnostic.severity.WARN] = "Warn",
+            [vim.diagnostic.severity.INFO] = "Info",
+            [vim.diagnostic.severity.HINT] = "Hint",
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        },
+    },
+})
 
 -- mapping
 local keymap = vim.keymap.set
-keymap("n", "gs", vim.lsp.buf.hover, { buffer = 0 })                                 -- show info
-keymap("n", "gd", vim.lsp.buf.definition, { buffer = 0 })                            -- go to definition
-keymap("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })                       -- go to type definition
-keymap("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })                        -- go to implementation
+keymap("n", "gs", vim.lsp.buf.hover, {})                                 -- show info
+keymap("n", "gd", vim.lsp.buf.definition, {})                            -- go to definition
+keymap("n", "gt", vim.lsp.buf.type_definition, {})                       -- go to type definition
+keymap("n", "gi", vim.lsp.buf.implementation, {})                        -- go to implementation
 
-keymap("n", "<leader>dl", ":Lspsaga show_workspace_diagnostics<CR>", { buffer = 0 }) -- list of errors
+keymap("n", "<leader>dl", ":Lspsaga show_workspace_diagnostics<CR>", {}) -- list of errors
 
 -- formatting on save
-local formatters = {}
-local formatters_by_ft = {}
+local formatters = {
+    black = {
+        prepend_args = { "--fast" },
+    },
+}
+local formatters_by_ft = {
+    python = { "black" },
+}
+
 local known_bin = {
     cmakelang = "cmake-format",
+    python = "black",
 }
 local formatter_config = {}
 
